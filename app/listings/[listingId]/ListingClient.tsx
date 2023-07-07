@@ -22,7 +22,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservation?: SafeReservation;
+  reservation?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -40,7 +40,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const disabledDates = useMemo(() => {
     let dates: Date[] = [];
 
-    reservation.forEach((reservation: any) => {
+    reservation.forEach((reservation) => {
       const range = eachDayOfInterval({
         start: new Date(reservation.startDate),
         end: new Date(reservation.endDate),
